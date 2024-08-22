@@ -24,13 +24,11 @@
     <!-- Materialize CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" crossorigin="anonymous"></script>
 
-    <!-- Custom Script to Fetch Data from API -->
     <script>
         $(document).ready(function() {
-            // Fetch lobby data from the API
             function fetchLobbyData() {
                 $.ajax({
-                    url: "https://yourwebsite.com/api/lobbies", // API endpoint to fetch lobby data
+                    url: "https://yourwebsite.com/api/lobbies", 
                     method: "GET",
                     success: function(data) {
                         // Assuming API response is an object like { lobby1: {count: 5}, lobby2: {count: 7} }
@@ -43,17 +41,16 @@
                 });
             }
 
-            // Fetch data immediately on page load
+
             fetchLobbyData();
 
-            // Optionally, refresh the data every 30 seconds
             setInterval(fetchLobbyData, 30000);
         });
     </script>
 </head>
 <body>
     <nav>
-        <a href="index.html" class="logo"><img src="logo.svg" alt="Logo"></a>
+        <a href="https://openleaguebpm.github.io/openleaguebpm" class="logo"><img src="logo.svg" alt="Logo"></a>
         <a class="colored-button" href="https://t.me/openleague_bpm">Telegram</a>
         <a href="https://discord.gg/YJx4zdJmmg" class="colored-button">Discord</a>
     </nav>
@@ -65,7 +62,6 @@
         <a href="#" class="colored-button">Check it all out!</a>
     </main>
     <main>
-        <!-- Main Section with Lobbies -->
         <section class="lobby-section">
             <div class="lobby">
                 <h2>Lobby 1</h2>
