@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>openleague - premium matchmaking</title>
+    <meta property="theme-color" content="#c19aa4">
+    <meta name="keywords" content="openleague, Blockpost Mobile, matchmaking, premium matchmaking">
+    <meta content="openleague - premium matchmaking" property="og:title">
+    <meta content="Time to dominate with openleague, play like never before with our unique and secure addon" property="og:description">
+    <meta content="https://yourwebsite.com" property="og:url">
+    <meta content="https://yourwebsite.com/preview.png" property="og:image">
+    <meta content="#e2b5c7" name="theme-color">
+    <link href="https://yourwebsite.com/favicon.webp" rel="icon" type="image/x-icon">
+
+    <!-- jQuery and other libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha512-Ua/7Woz9L5O0cwB/aYexmgoaD7lw3dWe9FvXejVdgqu71gRog3oJgjSWQR55fwWx+WKuk8cl7UwA1RS6QCadFA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Materialize CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" crossorigin="anonymous"></script>
+
+    <!-- Custom Script to Fetch Data from API -->
+    <script>
+        $(document).ready(function() {
+            // Fetch lobby data from the API
+            function fetchLobbyData() {
+                $.ajax({
+                    url: "https://yourwebsite.com/api/lobbies", // API endpoint to fetch lobby data
+                    method: "GET",
+                    success: function(data) {
+                        // Assuming API response is an object like { lobby1: {count: 5}, lobby2: {count: 7} }
+                        $('#lobby1-count').text(`${data.lobby1.count}/10`);
+                        $('#lobby2-count').text(`${data.lobby2.count}/10`);
+                    },
+                    error: function(error) {
+                        console.error("Error fetching lobby data:", error);
+                    }
+                });
+            }
+
+            // Fetch data immediately on page load
+            fetchLobbyData();
+
+            // Optionally, refresh the data every 30 seconds
+            setInterval(fetchLobbyData, 30000);
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"><img src="logo.svg" alt="Logo"></a>
+        <a class="colored-button" href="https://t.me/openleague_bpm">Telegram</a>
+        <a href="https://discord.gg/YJx4zdJmmg" class="colored-button">Discord</a>
+    </nav>
+    <main>
+        <h1>Time to dominate with<br>
+            <span class="colored">openleague</span>
+        </h1>
+        <h3>Enjoy Blockpost Mobile like never before with our discord server.</h3>
+        <a href="#" class="colored-button">Check it all out!</a>
+    </main>
+    <main>
+        <!-- Main Section with Lobbies -->
+        <section class="lobby-section">
+            <div class="lobby">
+                <h2>Lobby 1</h2>
+                <p>Players: <span id="lobby1-count">0/10</span></p>
+                <a href="https://discord.gg/NERVcvjHWW" class="colored-button">Join</a>
+            </div>
+            <div class="lobby">
+                <h2>Lobby 2</h2>
+                <p>Players: <span id="lobby2-count">0/10</span></p>
+                <a href="https://discord.gg/gwGf2j93" class="colored-button">Join</a>
+            </div>
+        </section>
+    </main>
+    <section class="ready-small">
+        <h1>Ready to give it a shot?</h1>
+        <a href="https://discord.gg/YJx4zdJmmg" class="colored-button">Join now!</a>
+    </section>
+    <footer>
+        <p>Copyright © <script>document.write(new Date().getFullYear());</script> OpenLeague</p>
+    </footer>
+</body>
+</html>
