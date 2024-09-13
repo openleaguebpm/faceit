@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>openleague - premium matchmaking</title>
+    <meta property="theme-color" content="#c19aa4">
+    <meta name="keywords" content="openleague, Blockpost Mobile, matchmaking, premium matchmaking">
+    <meta content="openleague - premium matchmaking" property="og:title">
+    <meta content="Time to dominate with openleague, play like never before with our unique and secure addon" property="og:description">
+    <meta content="https://yourwebsite.com" property="og:url">
+    <meta content="https://yourwebsite.com/preview.png" property="og:image">
+    <meta content="#e2b5c7" name="theme-color">
+    <link href="https://yourwebsite.com/favicon.webp" rel="icon" type="image/x-icon">
+
+    <!-- jQuery and other libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha512-Ua/7Woz9L5O0cwB/aYexmgoaD7lw3dWe9FvXejVdgqu71gRog3oJgjSWQR55fwWx+WKuk8cl7UwA1RS6QCadFA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Materialize CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" crossorigin="anonymous"></script>
+
+    <!-- Custom Script to Fetch Data from API -->
+    <script>
+        $(document).ready(function() {
+            // Fetch lobby data from the API
+            function fetchLobbyData() {
+                $.ajax({
+                    url: "https://yourwebsite.com/api/lobbies", // API endpoint to fetch lobby data
+                    method: "GET",
+                    success: function(data) {
+                        // Assuming API response is an object like { lobby1: {count: 5}, lobby2: {count: 7} }
+                        $('#lobby1-count').text(`${data.lobby1.count}/10`);
+                        $('#lobby2-count').text(`${data.lobby2.count}/10`);
+                    },
+                    error: function(error) {
+                        console.error("Error fetching lobby data:", error);
+                    }
+                });
+            }
+
+            // Fetch data immediately on page load
+            fetchLobbyData();
+
+            // Optionally, refresh the data every 30 seconds
+            setInterval(fetchLobbyData, 30000);
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"><img src="logo.svg" alt="Logo"></a>
+        <a class="colored-button" href="https://t.me/openleague_bpm">Telegram</a>
+        <a href="https://discord.gg/YJx4zdJmmg" class="colored-button">Discord</a>
+        <a href="banlist.html" class="colored-button">BANLIST</a>
+        <a class="colored-button" id="rules-button">RULES</a>
+            <!-- Modal -->
+            <style>
+                .rules-content {
+                    max-height: 400px; /* Ограничение высоты */
+                    overflow-y: auto; /* Добавление скроллбара */
+                    padding: 10px;
+                }
+            
+                .rules-content p, .rules-content ul {
+                    margin-bottom: 10px; /* Отступы между абзацами */
+                }
+            
+                .highlight {
+                    color: #e74c3c; /* Цвет для выделения важных моментов (красный) */
+                    font-weight: bold;
+                }
+            
+                .rules-content strong {
+                    color: #2ecc71; /* Цвет для выделения заголовков (зелёный) */
+                    font-weight: bold;
+                }
+            
+                .rules-content ul {
+                    list-style-type: disc;
+                    padding-left: 20px; /* Отступы для списков */
+                }
+            </style>
+            
+            <div id="rules-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Правила турнира</h2>
+                    <div class="rules-content">
+                        <p><span class="highlight">*ВНИМАНИЕ!</span> Информация об условиях проведения турниров может меняться – просьба следить за сообщениями на стене группы OpenLeague.</p>
+                        
+                        <p><strong>*Администрация</strong> вправе редактировать правила без уведомления игроков.</p>
+                        
+                        <p>Один игрок может играть только за один клан. Даже если у него несколько страниц и аккаунтов, это не даёт ему право играть за несколько кланов. Если на вас появятся доказательства такого нарушения, то вы будете исключены с турнира. Игрок должен находиться в клане не менее двух дней, чтобы играть турнир.</p>
+            
+                        <ul>
+                            <li><span class="highlight">Запрещено</span> использование любых багов на звук. Баг, когда слышно шаги противника, но звуки стрельбы и другие игровые звуки не слышны.</li>
+                            <li>Если какая-то из команд имеет претензии, то она подает заявление модератору, ведущему бой, или Администраторам турнира. Решение будет принято после рассмотрения.</li>
+                            <li><span class="highlight">Запрещено</span> использование любого стороннего ПО (макросы, читы и т.п.).</li>
+                            <li><span class="highlight">Запрещено</span> оскорбление администрации и судейского состава.</li>
+                            <li>Игрок, нарушивший первое правило, будет исключён из турнира.</li>
+                            <li>Наказание за второе нарушение определяется администрацией и может включать исключение из турнира.</li>
+                        </ul>
+            
+                        <p><strong>Правила проведения боёв:</strong></p>
+                        <ul>
+                            <li>Бои проводятся между двумя командами по 5 бойцов в каждой.</li>
+                            <li>Бои проводятся на закрытых паролями картах в режиме <strong>BOMB MODE</strong>.</li>
+                            <li>Бой ведётся до 2-х побед одной команды. Если ничья, назначается 3-я решающая карта.</li>
+                            <li>Ножевые раунды играются до 3 побед, разрешены только дефолтные ножи. <span class="highlight">Запрещено</span> покупать броню и снаряжение.</li>
+                            <li><span class="highlight">Запрещено</span> опаздывать на игру. В случае опоздания команда получает техническое поражение.</li>
+                        </ul>
+            
+                        <p>ОБНОВЛЕНО: 30.04.2022</p>
+                        <ul>
+                            <li><span class="highlight">Запрещены</span> все виды подсадок.</li>
+                            <li><span class="highlight">Запрещено</span> играть через виртуальное пространство.</li>
+                            <li>Игрок должен находиться в клане более 3 дней, чтобы участвовать в турнире.</li>
+                            <li>Игра должна проводиться под одним ником, иначе игрок может не попасть в статистику.</li>
+                        </ul>
+            
+                        <p><strong>Пик карт:</strong></p>
+                        <ul>
+                            <li>1 карта: Команда А выбирает карту, Команда Б — сторону.</li>
+                            <li>2 карта: Команда Б выбирает карту, Команда А — сторону.</li>
+                            <li>3 карта: Ножевой раунд, победитель выбирает сторону, проигравший — карту.</li>
+                        </ul>
+            
+                        <p>ОБНОВЛЕНО: 23.05.2022</p>
+                    </div>
+                </div>
+            </div>
+            
+            
+    </nav>
+
+    <main>
+        <h1>Time to dominate with<br>
+            <span class="colored">openleague</span>
+        </h1>
+        <h3>Enjoy Blockpost Mobile like never before with our discord server.</h3>
+        <a href="#" class="colored-button">Check it all out!</a>
+    </main>
+    <main>
+        <!-- Main Section with Lobbies -->
+        <section class="lobby-section">
+            <div class="lobby">
+                <h2>Lobby 1</h2>
+                <p>Players: <span id="lobby1-count">0/10</span></p>
+                <a href="https://discord.gg/NERVcvjHWW" class="colored-button">Join</a>
+            </div>
+            <div class="lobby">
+                <h2>Lobby 2</h2>
+                <p>Players: <span id="lobby2-count">0/10</span></p>
+                <a href="https://discord.gg/gwGf2j93" class="colored-button">Join</a>
+            </div>
+        </section>
+    </main>
+    <section class="ready-small">
+        <h1>Ready to give it a shot?</h1>
+        <a href="https://discord.gg/YJx4zdJmmg" class="colored-button">Join now!</a>
+    </section>
+    <footer>
+        <p>Copyright © <script>document.write(new Date().getFullYear());</script> OpenLeague</p>
+        <script src="script.js"></script>
+    </footer>
+</body>
+</html>

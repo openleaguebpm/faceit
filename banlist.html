@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banlist - openleague</title>
+    <meta property="theme-color" content="#c19aa4">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            background-color: #c19aa4;
+            color: white;
+            cursor: pointer;
+        }
+        .pagination button.active {
+            background-color: #a37b87;
+        }
+        .search-container {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .search-container input {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        main {
+            padding: 2rem 5vw;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"><img src="logo.svg" alt="Logo"></a>
+        <a class="colored-button" href="https://t.me/openleague_bpm">Telegram</a>
+        <a href="https://discord.gg/YJx4zdJmmg" class="colored-button">Discord</a>
+        <a href="banlist.html" class="colored-button">BANLIST</a>
+    </nav>
+
+    <main>
+        <h1>Banned Players</h1>
+
+        <!-- Search input -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by nickname...">
+        </div>
+
+        <!-- Table with paginated results -->
+        <table id="banlistTable">
+            <thead>
+                <tr>
+                    <th>Nickname</th>
+                    <th>ID</th>
+                    <th>Reason</th>
+                    <th>Date</th>
+                    <th>Period</th>
+                    <th>Admin</th>
+                </tr>
+            </thead>
+            <tbody id="banlistBody">
+                <!-- Example rows; these will be paginated and searchable -->
+                <tr><td>abvgde</td><td>2139278</td><td>Cheating</td><td>2024-09-13</td><td>Permament</td><td>Ageman</td></tr>
+                <tr><td>clxme</td><td>41265</td><td>Cheating</td><td>2024-09-13</td><td>Permament</td><td>Ageman</td></tr>
+                <tr><td>Odegaard</td><td>2389211</td><td>Cheating</td><td>2024-09-13</td><td>2 years</td><td>Ageman</td></tr>
+                <tr><td>kryiz</td><td>None</td><td>Cheating</td><td>2022-01-28</td><td>2 years</td><td>mONESY</td></tr>
+                <tr><td>None</td><td>1278105</td><td>Cheating</td><td>2024-09-13</td><td>2 years</td><td>Ageman</td></tr>
+                <tr><td>lilomen</td><td>2523580</td><td>Cheating</td><td>2024-09-13</td><td>2 years</td><td>Ageman</td></tr>
+                <tr><td>freddykonny</td><td>1729364</td><td>Cheating</td><td>2023-06-23</td><td>Permament</td><td>Ageman</td></tr>
+                <tr><td>ironsetz</td><td>1618045</td><td>Cheating</td><td>2023-04-02</td><td>Permament</td><td>Ageman</td></tr>
+                <tr><td>BibizyanaEgoist</td><td>936977</td><td>Cheating</td><td>2023-03-29</td><td>2 years</td><td>Ageman</td></tr>
+
+
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+
+        <!-- Pagination buttons -->
+        <div class="pagination" id="pagination"></div>
+    </main>
+
+    <footer>
+        <p>Copyright © <script>document.write(new Date().getFullYear());</script> OpenLeague</p>
+    </footer>
+
+    <script>
+        const rowsPerPage = 10;
+        let currentPage = 1;
+        const tableBody = document.getElementById('banlistBody');
+        const pagination = document.getElementById('pagination');
+        const searchInput = document.getElementById('searchInput');
+        const rows = Array.from(tableBody.getElementsByTagName('tr'));
+
+        // Function to display a specific page
+        function displayPage(page) {
+            tableBody.innerHTML = ''; // Clear current table body
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const filteredRows = rows.filter(row => row.style.display !== 'none');
+            const pageRows = filteredRows.slice(start, end);
+            pageRows.forEach(row => tableBody.appendChild(row));
+
+            updatePagination(filteredRows.length, page);
+        }
+
+        // Function to update pagination buttons
+        function updatePagination(totalRows, page) {
+            pagination.innerHTML = '';
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                if (i === page) {
+                    button.classList.add('active');
+                }
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    displayPage(currentPage);
+                });
+                pagination.appendChild(button);
+            }
+        }
+
+        // Function to handle search
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+            rows.forEach(row => {
+                const nickname = row.getElementsByTagName('td')[0].textContent.toLowerCase();
+                if (nickname.includes(query)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            currentPage = 1; // Reset to first page after search
+            displayPage(currentPage);
+        });
+
+        // Initial display of the first page
+        displayPage(currentPage);
+    </script>
+</body>
+</html>
