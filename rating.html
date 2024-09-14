@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clan Ratings</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assuming style.css contains your site's styles -->
+    <style>
+        /* Add custom CSS for avatars and flags */
+        body, html {
+    margin: 0;
+    padding: 0;
+}
+
+nav, footer {
+    text-align: center;
+    margin: 0; /* Remove margin */
+    padding: 20px 0; /* Set a consistent padding */
+}
+
+nav a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px; /* Add padding for spacing */
+}
+
+.card {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 80px; /* Restrict avatar size */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%; /* Makes the images circular */
+}
+
+.card h1 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    word-wrap: break-word; /* Позволяет переносить слова */
+    text-align: center; /* Центрирование текста */
+    letter-spacing: -0.5px; /* Уменьшаем расстояние между буквами */
+    line-height: 1.4; /* Делает текст более аккуратным */
+}
+
+
+.card h3 {
+    font-size: 1em;
+    color: #888;
+}
+
+footer p {
+    margin: 0; /* Remove margin to prevent white gap */
+}
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="logo.svg"></a> <!-- Add your logo here -->
+        </div>
+        <a class="colored-button" href="https://t.me/openleague_bpm">Telegram</a>
+        <a href="index.html" class="colored-button">Home</a>
+        <a href="https://discord.gg/YJx4zdJmmg" class="colored-button">Discord</a>
+    </nav>
+
+    <main>
+        <h1 class="colored">Clan Ratings</h1>
+        <h3>Explore the top-rated clans with the most impressive achievements!</h3>
+
+        <section class="cards">
+            <!-- First Clan Card -->
+            <div class="card">
+                <img src="rfls.jpg" alt="Replacement for legends">
+                <h1><i class="colored">#1</i> Replacement for legends [RFLS]
+                </h1>
+                <h3>Points: 810</h3>
+            </div>
+
+            <!-- Second Clan Card -->
+            <div class="card">
+                <img src="espada.jpg" alt="Espada">
+                <h1><i class="colored">#2</i> Espada [Espada]
+                </h1>
+                <h3>Points: 520</h3>
+            </div>
+
+            <!-- Third Clan Card -->
+            <div class="card">
+                <img src="dn.jpg" alt="Dead None">
+                <h1><i class="colored">#3</i> Dead None [DN]
+                </h1>
+                <h3>Points: 410</h3>
+            </div>
+
+            <!-- Fourth Clan Card -->
+            <div class="card">
+                <img src="hcln.jpg" alt="Hikimaru Clan">
+                <h1><i class="colored">#4</i> Hikimaru Clan [HCLN]
+                </h1>
+                <h3>Points: 380</h3>
+            </div>
+
+            <!-- Fifth Clan Card -->
+            <div class="card">
+                <img src="tb.jpg" alt="Team Brave">
+                <h1><i class="colored">#5</i> Team Brave [TB]
+                </h1>
+                <h3>Points: 330</h3>
+            </div>
+
+            <!-- Sixth Clan Card -->
+            <div class="card">
+                <img src="bebas.jpg" alt="Bebas Team">
+                <h1><i class="colored">#6</i> Bebas Team [Bebas]
+                </h1>
+                <h3>Points: 150</h3>
+            </div>
+
+            <!-- Seventh Clan Card -->
+            <div class="card">
+                <img src="ev.jpg" alt="Evollen">
+                <h1><i class="colored">#7</i> Evollen [EV]
+                </h1>
+                <h3>Points: 120</h3>
+            </div>
+
+            <!-- Eighth Clan Card -->
+            <div class="card">
+                <img src="alma.jpg" alt="Alma Squad">
+                <h1><i class="colored">#8</i> Alma Squad [Alma]
+                </h1>
+                <h3>Points: 80</h3>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; OpenLeague All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
