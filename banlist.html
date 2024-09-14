@@ -8,6 +8,7 @@
     <meta property="theme-color" content="#c19aa4">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Основные стили для таблицы */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -50,11 +51,37 @@
             padding: 2rem 5vw;
             text-align: center;
         }
+        /* Контейнер с горизонтальным скроллом для мобильных устройств */
+        .table-wrapper {
+            overflow-x: auto; /* Горизонтальная прокрутка */
+        }
         table {
             width: 100%;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Медиазапрос для мобильных устройств (экраны шириной до 768px) */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            main {
+                padding: 1rem 2vw; /* Уменьшаем отступы для мобильных */
+            }
+            .table-wrapper {
+                width: 100%;
+                overflow-x: scroll; /* Добавляем горизонтальный скролл */
+            }
+            table {
+                width: 100%;
+                min-width: 600px; /* Минимальная ширина таблицы для скролла */
+            }
+            th, td {
+                padding: 8px; /* Уменьшаем отступы ячеек на мобильных */
+            }
         }
     </style>
 </head>
@@ -74,34 +101,33 @@
             <input type="text" id="searchInput" placeholder="Search by nickname...">
         </div>
 
-        <!-- Table with paginated results -->
-        <table id="banlistTable">
-            <thead>
-                <tr>
-                    <th>Nickname</th>
-                    <th>ID</th>
-                    <th>Reason</th>
-                    <th>Date</th>
-                    <th>Period</th>
-                    <th>Admin</th>
-                </tr>
-            </thead>
-            <tbody id="banlistBody">
-                <!-- Example rows; these will be paginated and searchable -->
-                <tr><td>abvgde</td><td>2139278</td><td>Cheating</td><td>2024-09-13</td><td>Permament</td><td>Ageman</td></tr>
-                <tr><td>clxme</td><td>41265</td><td>Cheating</td><td>2024-09-13</td><td>Permament</td><td>Ageman</td></tr>
-                <tr><td>Odegaard</td><td>2389211</td><td>Cheating</td><td>2024-09-13</td><td>2 years</td><td>Ageman</td></tr>
-                <tr><td>kryiz</td><td>None</td><td>Cheating</td><td>2022-01-28</td><td>2 years</td><td>mONESY</td></tr>
-                <tr><td>None</td><td>1278105</td><td>Cheating</td><td>2024-09-13</td><td>2 years</td><td>Ageman</td></tr>
-                <tr><td>lilomen</td><td>2523580</td><td>Cheating</td><td>2024-09-13</td><td>2 years</td><td>Ageman</td></tr>
-                <tr><td>freddykonny</td><td>1729364</td><td>Cheating</td><td>2023-06-23</td><td>Permament</td><td>Ageman</td></tr>
-                <tr><td>ironsetz</td><td>1618045</td><td>Cheating</td><td>2023-04-02</td><td>Permament</td><td>Ageman</td></tr>
-                <tr><td>BibizyanaEgoist</td><td>936977</td><td>Cheating</td><td>2023-03-29</td><td>2 years</td><td>Ageman</td></tr>
-
-
-                <!-- Add more rows as needed -->
-            </tbody>
-        </table>
+        <!-- Table with paginated results wrapped in a scrollable div -->
+        <div class="table-wrapper">
+            <table id="banlistTable">
+                <thead>
+                    <tr>
+                        <th>Nickname</th>
+                        <th>ID</th>
+                        <th>Reason</th>
+                        <th>Date</th>
+                        <th>Period</th>
+                        <th>Admin</th>
+                    </tr>
+                </thead>
+                <tbody id="banlistBody">
+                    <!-- Example rows; these will be paginated and searchable -->
+                    <tr><td>abvgde</td><td>2139278</td><td>Cheating</td><td>2024-09-13</td><td>Permanent</td><td>Ageman</td></tr>
+                    <tr><td>clxme</td><td>41265</td><td>Cheating</td><td>2024-09-13</td><td>Permanent</td><td>Ageman</td></tr>
+                    <tr><td>Odegaard</td><td>2389211</td><td>Cheating</td><td>2024-09-13</td><td>2 years</td><td>Ageman</td></tr>
+                    <tr><td>kryiz</td><td>None</td><td>Cheating</td><td>2022-01-28</td><td>2 years</td><td>mONESY</td></tr>
+                    <tr><td>None</td><td>1278105</td><td>Cheating</td><td>2024-09-13</td><td>2 years</td><td>Ageman</td></tr>
+                    <tr><td>lilomen</td><td>2523580</td><td>Cheating</td><td>2024-09-13</td><td>2 years</td><td>Ageman</td></tr>
+                    <tr><td>freddykonny</td><td>1729364</td><td>Cheating</td><td>2023-06-23</td><td>Permanent</td><td>Ageman</td></tr>
+                    <tr><td>ironsetz</td><td>1618045</td><td>Cheating</td><td>2023-04-02</td><td>Permanent</td><td>Ageman</td></tr>
+                    <tr><td>BibizyanaEgoist</td><td>936977</td><td>Cheating</td><td>2023-03-29</td><td>2 years</td><td>Ageman</td></tr>
+                </tbody>
+            </table>
+        </div>
 
         <!-- Pagination buttons -->
         <div class="pagination" id="pagination"></div>
