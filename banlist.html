@@ -54,6 +54,8 @@
         /* Контейнер с горизонтальным скроллом для мобильных устройств */
         .table-wrapper {
             overflow-x: auto; /* Горизонтальная прокрутка */
+            -webkit-overflow-scrolling: touch; /* Добавляет плавную прокрутку на iOS */
+            margin-bottom: 20px; /* Отступ для размещения ползунка */
         }
         table {
             width: 100%;
@@ -73,7 +75,7 @@
             }
             .table-wrapper {
                 width: 100%;
-                overflow-x: scroll; /* Добавляем горизонтальный скролл */
+                overflow-x: auto; /* Горизонтальная прокрутка */
             }
             table {
                 width: 100%;
