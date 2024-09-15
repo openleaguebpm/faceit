@@ -947,3 +947,9 @@ button.next {
 button.prev:hover, button.next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+/* Логотип на мобильных */
+@media only screen and (max-width: 777px) {
+    nav .logo img {
+        height: 2.2rem; /* Уменьшаем высоту для мобильных */
+    }
+}
