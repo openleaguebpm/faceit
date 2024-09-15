@@ -68,7 +68,8 @@ nav {
 }
 
 nav .logo img {
-    height: 3.2rem;
+    max-width: 100%; /* Логотип будет адаптироваться под ширину родительского контейнера */
+    height: auto;    /* Сохранение пропорций логотипа */
 }
 
 nav .logo {
@@ -947,9 +948,19 @@ button.next {
 button.prev:hover, button.next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-/* Логотип на мобильных */
-@media only screen and (max-width: 777px) {
-    nav .logo img {
-        height: 2.2rem; /* Уменьшаем высоту для мобильных */
+@media (max-width: 768px) {
+    /* Для мобильных устройств */
+    .logo img {
+        max-width: 150px; /* Ограничиваем максимальную ширину логотипа на мобильных устройствах */
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Центрирование навигации */
+    }
+
+    nav a {
+        margin-bottom: 10px; /* Добавляем отступы между элементами меню */
     }
 }
